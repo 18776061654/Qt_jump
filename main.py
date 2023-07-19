@@ -22,10 +22,10 @@ class MainWindow(QUiLoader):
         event.accept()
 
     def realtime_clicked(self):
-        print("实时检测按钮clicked")
+        print("实时检测按钮")
 
     def selectvideo_clicked(self):
-        print("选择视频按钮clicked")
+        print("选择视频按钮")
         
         # 加载选择视频窗口UI
         self.select_window = QUiLoader().load('./resources/SelectVideoWindow.ui') 
@@ -37,7 +37,7 @@ class MainWindow(QUiLoader):
         self.select_window.show()
 
     def setting_clicked(self):
-        print("设置按钮clicked")
+        print("设置按钮")
 
         
 
