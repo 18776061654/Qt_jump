@@ -1,4 +1,5 @@
 import sys
+import speed.Speed as Speed
 from PySide6.QtWidgets import QApplication
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, Signal
@@ -7,8 +8,11 @@ class MainWindow(QUiLoader):
     closed = Signal()
 
 
-    def __init__(self, ui_file):
+    def __init__(self):
         super().__init__()
+
+        ui_file = QFile("./resources/main.ui")  
+        ui_file.open(QFile.ReadOnly)
         self.ui = self.load(ui_file)
 
         self.ui.RealTimeBtn.clicked.connect(self.realtime_clicked)
@@ -16,10 +20,6 @@ class MainWindow(QUiLoader):
         self.ui.SettingBtn.clicked.connect(self.setting_clicked)
 
 
-    def closeEvent(self, event):
-        print("Main window closed!")
-        self.closed.emit()
-        event.accept()
 
     def realtime_clicked(self):
         print("实时检测按钮")
@@ -28,27 +28,27 @@ class MainWindow(QUiLoader):
         print("选择视频按钮")
         
         # 加载选择视频窗口UI
-        self.select_window = QUiLoader().load('./resources/SelectVideoWindow.ui') 
-        # 连接closed信号
+        self.select_window =SelectVideoWindow()
         
-        self.closed.connect(self.select_window.close) 
-    
-        # 显示窗口 
         self.select_window.show()
 
     def setting_clicked(self):
         print("设置按钮")
 
-        
+class SelectVideoWindow(QUiLoader):
+  def __init__(self):
+    super().__init__()
+    ui_file = QFile('./resources/SelectVideoWindow.ui')
+    ui_file.open(QFile.ReadOnly) 
+    self.ui = self.load(ui_file)
 
+  def show(self):
+    self.ui.show()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    ui_file = QFile("./resources/main.ui")
-    ui_file.open(QFile.ReadOnly)
-
-    main_window = MainWindow(ui_file) 
+    main_window = MainWindow() 
     main_window.ui.show()
 
     sys.exit(app.exec())
