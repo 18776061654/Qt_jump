@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SelectVideoWindow</class>
+ <widget class="QDialog" name="SelectVideoWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>选择要实现的功能</string>
+  </property>
+  <widget class="QPushButton" name="speedTestBtn">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>90</y>
+     <width>120</width>
+     <height>120</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>测速</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AttitudeBtn">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>90</y>
+     <width>120</width>
+     <height>120</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>空中姿态</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
